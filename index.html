@@ -51,7 +51,6 @@ button{font-family:inherit}:focus-visible{outline:2px solid var(--gold);outline-
 .crumb{font:400 22px var(--disp);color:var(--parch)}.crumb::before{content:'✦ ';color:var(--gold);font-size:14px}
 .top-mid{flex:1;display:flex;justify-content:center}
 .auth{display:flex;align-items:center;gap:10px}
-/* присутствие в шапке */
 .pres{position:relative}
 .pres-btn{display:flex;align-items:center;gap:8px;background:#241b11;border:1px solid var(--line);border-radius:20px;padding:6px 14px;cursor:pointer;font:500 13px var(--body);color:var(--dim);transition:.2s}
 .pres-btn:hover{border-color:var(--gold-d);color:var(--gold-b)}
@@ -64,7 +63,7 @@ button{font-family:inherit}:focus-visible{outline:2px solid var(--gold);outline-
 .pres-row{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:7px;font-size:14px;color:var(--ink)}
 .pres-row:hover{background:rgba(217,164,65,.07)}
 .pres-row i{width:9px;height:9px;border-radius:50%;flex:none}
-.pres-row i.on{background:#57c26a;box-shadow:0 0 7px #57c26a}.pres-row i.away{background:#d9a441}.pres-row i.off{background:#5a4420}
+.pres-row i.on{background:#57c26a;box-shadow:0 0 7px #57c26a}.pres-row i.off{background:#5a4420}
 .pres-row .pr{margin-left:auto;font:600 9px var(--body);letter-spacing:.1em;text-transform:uppercase;color:#6b5836}
 .pres-empty{font:400 14px var(--hand);color:#6b5836;padding:10px 8px}
 .btn{font:700 14px var(--body);letter-spacing:.03em;padding:9px 18px;border-radius:7px;cursor:pointer;border:1px solid transparent;transition:.2s;white-space:nowrap}
@@ -200,7 +199,6 @@ label.f input,label.f textarea{margin-top:6px}
 .tok:hover .tx{opacity:1}
 .tok .tn{position:absolute;top:calc(100% + 2px);left:50%;transform:translateX(-50%);font:400 12px var(--hand);color:var(--parch);white-space:nowrap;text-shadow:0 1px 3px #000;pointer-events:none}
 .tok .tbadge{position:absolute;bottom:-5px;left:-5px;font-size:12px;filter:drop-shadow(0 1px 2px #000);pointer-events:none}
-/* скрытые маркеры */
 .tok.secret{border-style:dashed;border-color:rgba(255,210,122,.85);background:radial-gradient(circle at 35% 30%,#5a3a1acc,#3a2410cc)!important;box-shadow:0 0 0 2px rgba(217,164,65,.25),0 8px 14px -6px #000}
 .tok.secret .tdc{position:absolute;top:-9px;left:-9px;background:#1c1206;border:1px solid var(--gold-d);border-radius:5px;font:700 10px var(--body);color:var(--gold-b);padding:0 4px;pointer-events:none}
 .tok.secret.found{border-style:solid;opacity:.92}
@@ -282,8 +280,6 @@ label.f input,label.f textarea{margin-top:6px}
 .mclose{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:1px solid #4a3819;background:#241b11;color:var(--dim);font-size:18px;cursor:pointer;transition:.2s;z-index:2}
 .mclose:hover{color:var(--blood);border-color:var(--blood);transform:rotate(90deg)}
 .mtitle{font:400 28px var(--disp);color:var(--parch);margin-bottom:4px}.msub{font:400 15px var(--hand);color:var(--dim);margin-bottom:18px}
-
-/* ═══ БЛАНК ПЕРСОНАЖА (переработан) ═══ */
 .csheet{display:flex;flex-direction:column;gap:12px}
 .cs-head{display:flex;gap:16px;align-items:center;background:linear-gradient(165deg,#241b11,#1c140b);border:1px solid var(--line);border-radius:12px;padding:16px;position:relative;overflow:hidden}
 .cs-head::after{content:'';position:absolute;inset:0;background:radial-gradient(400px 120px at 100% 0,rgba(217,164,65,.08),transparent 70%);pointer-events:none}
@@ -312,7 +308,6 @@ label.f input,label.f textarea{margin-top:6px}
 .cs-sec .cs-h .ico{font-size:15px}
 .cs-stat{background:var(--c-stat)}.cs-hp{background:rgba(192,57,43,.07);--sc:var(--c-hp)}.cs-hp .cs-h{color:#e08a80}
 .cs-atk{--sc:var(--c-atk)}.cs-mag{--sc:var(--c-mag)}.cs-coin{--sc:var(--c-coin)}.cs-feat{--sc:var(--c-feat)}
-.cs-toprow{display:flex;flex-direction:column;gap:8px}
 .cs-minis{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
 .cs-mini{background:#171009;border:1px solid #332613;border-radius:8px;padding:7px;text-align:center}
 .cs-mini .lb{font:600 9px var(--body);letter-spacing:.12em;text-transform:uppercase;color:#6b5836}
@@ -388,10 +383,7 @@ label.f input,label.f textarea{margin-top:6px}
 .cs-reveal input{width:auto}
 .cs-savebar{display:flex;gap:10px;margin-top:6px}.cs-savebar .btn{flex:1}
 .cs-hidden{text-align:center;font:400 22px var(--hand);color:#6b5836;padding:40px 10px}
-.cs-savedflash{position:absolute;inset:0;border-radius:12px;border:2px solid #57c26a;opacity:0;pointer-events:none;animation:flash .7s ease}
-@keyframes flash{0%{opacity:.8}100%{opacity:0}}
 @media(max-width:760px){.cs-grid{grid-template-columns:1fr}.cs-head{flex-wrap:wrap}.cs-headinfo{grid-template-columns:1fr 1fr}.cs-hpbars{flex-direction:row;width:100%}}
-
 .dice-grid{display:grid;grid-template-columns:1fr 1.1fr .9fr;gap:24px}
 .tray{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;align-content:start}
 .die{background:none;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 6px;border-radius:10px;transition:.2s}
@@ -429,7 +421,6 @@ label.f input,label.f textarea{margin-top:6px}
 .authnote{font:400 13px var(--hand);color:#6b5836;background:#171009;border:1px dashed #43331c;border-radius:8px;padding:10px 12px;margin-bottom:14px}
 .linkbtn{background:none;border:0;color:var(--arcane-b);font:500 13px var(--body);cursor:pointer;text-decoration:underline;padding:0}
 .linkbtn:hover{color:var(--gold-b)}
-.recovery-key{font:700 18px var(--disp);letter-spacing:.06em;color:var(--gold-b);background:#171009;border:1px dashed var(--gold-d);border-radius:9px;padding:12px;text-align:center;user-select:all;margin:6px 0;word-break:break-word}
 .fab{position:fixed;right:24px;bottom:24px;width:64px;height:64px;border-radius:50%;z-index:40;cursor:pointer;display:grid;place-items:center;border:2px solid #9db8ef;background:radial-gradient(circle at 35% 30%,#6f97e8,#2c4f9e 72%);box-shadow:0 12px 26px -8px #000,0 0 26px rgba(79,127,209,.45);transition:.25s}
 .fab:hover{transform:rotate(-16deg) scale(1.1);box-shadow:0 16px 30px -8px #000,0 0 40px rgba(127,176,232,.6)}.fab svg{width:36px;height:36px}
 #toasts{position:fixed;right:22px;bottom:104px;display:flex;flex-direction:column;gap:10px;z-index:90;max-width:320px}
@@ -448,7 +439,6 @@ label.f input,label.f textarea{margin-top:6px}
 <linearGradient id="gBlack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a54"/><stop offset=".55" stop-color="#232329"/><stop offset="1" stop-color="#0f0f13"/></linearGradient>
 </defs></svg>
 <div class="fx" id="fx"></div>
-
 <aside class="side">
   <a class="brand" data-nav="home">
     <svg viewBox="0 0 64 64"><polygon points="32,3 57,17 57,47 32,61 7,47 7,17" fill="url(#gBlue)" stroke="#9db8ef" stroke-width="2"/><path d="M32 15 48 42 H16 Z M32 3 V15 M57 17 32 15 M57 17 48 42 M57 47 48 42 M32 61 48 42 M32 61 16 42 M7 47 16 42 M7 17 16 42 M7 17 32 15" stroke="rgba(255,255,255,.4)" stroke-width="1.4" fill="none"/><text x="32" y="38" text-anchor="middle" font-family="Ruslan Display" font-size="13" fill="#fff">20</text></svg>
@@ -471,7 +461,6 @@ label.f input,label.f textarea{margin-top:6px}
   </nav>
   <div class="side-foot"><div class="conn"><i id="connDot"></i><span class="txt" id="connTxt">не в сети</span></div></div>
 </aside>
-
 <div class="shell">
   <header class="top">
     <div class="crumb" id="crumb">Главная</div>
@@ -513,7 +502,6 @@ label.f input,label.f textarea{margin-top:6px}
         <div class="panel rv"><h3>Последние броски</h3><div id="homeRolls"><div class="empty-hint">Пока тихо… Кто-нибудь, бросьте инициативу!</div></div></div>
       </div>
     </section>
-
     <section class="page" id="page-classes"><div class="page-head"><h2>Классы</h2><span class="sub">выбери свой путь · по материалам dnd.su</span></div><div class="grid" id="classesGrid"></div></section>
     <section class="page" id="page-races"><div class="page-head"><h2>Расы</h2><span class="sub">кровь и наследие</span></div><div class="grid" id="racesGrid"></div></section>
     <section class="page" id="page-monsters">
@@ -541,6 +529,7 @@ label.f input,label.f textarea{margin-top:6px}
         <button class="ibtn" id="btnSnap" title="Привязка к клеткам">⌗</button>
         <button class="ibtn" id="btnMeasure" title="Линейка расстояний">📏</button>
         <button class="ibtn" id="btnPercept" title="Проверка Внимательности (для игроков)">👁</button>
+        <button class="ibtn" id="btnClearTok" title="Очистить фишки и маркеры" style="display:none">🧹</button>
         <button class="ibtn" id="btnFull" title="Во весь экран">⛶</button>
         <select id="unitSel" title="Единицы и размер клетки"><option value="ft5">5 футов / клетка</option><option value="ft10">10 футов / клетка</option><option value="m1">1,5 м / клетка</option><option value="m2">3 м / клетка</option></select>
         <span class="hand" id="mapHint" style="color:#6b5836;margin-left:auto"></span>
@@ -611,10 +600,8 @@ label.f input,label.f textarea{margin-top:6px}
     </section>
   </main>
 </div>
-
 <button class="fab" onclick="openDice()" title="Бросить кубики"><svg viewBox="0 0 64 64"><polygon points="32,3 57,17 57,47 32,61 7,47 7,17" fill="rgba(255,255,255,.14)" stroke="#dbe6ff" stroke-width="2.4"/><path d="M32 15 48 42 H16 Z M32 3 V15 M57 17 32 15 M57 17 48 42 M57 47 48 42 M32 61 48 42 M32 61 16 42 M7 47 16 42 M7 17 16 42 M7 17 32 15" stroke="rgba(255,255,255,.55)" stroke-width="1.6" fill="none"/></svg></button>
 <div class="musicChip" id="musicChip"><span class="eq"><i></i><i></i><i></i></span><span>—</span></div>
-
 <div class="modal" id="diceModal"><div class="sheet">
   <button class="mclose" onclick="closeModal('diceModal')">✕</button>
   <div class="mtitle">Кости судьбы</div><div class="msub">кликай по кубикам, чтобы добавить их в бросок · результат сразу увидят все за столом</div>
@@ -625,14 +612,12 @@ label.f input,label.f textarea{margin-top:6px}
     <aside class="hist"><h3>История бросков</h3><div class="histlist" id="histList"></div><button class="btn ghost sm danger" id="histClear" style="margin-top:10px">Очистить</button></aside>
   </div>
 </div></div>
-
 <div class="modal" id="sheetModal"><div class="sheet wide">
   <button class="mclose" onclick="closeModal('sheetModal')">✕</button>
   <div class="mtitle" id="sheetTitle">📋 Лист персонажа</div>
   <div class="msub" id="sheetSub"></div>
   <div id="sheetBody"></div>
 </div></div>
-
 <div class="modal" id="libModal"><div class="sheet narrow">
   <button class="mclose" onclick="closeModal('libModal')">✕</button>
   <div class="mtitle">🗂 Библиотека карт</div>
@@ -640,7 +625,6 @@ label.f input,label.f textarea{margin-top:6px}
   <button class="btn gold" id="saveMap" style="margin-bottom:14px">💾 Сохранить текущую</button>
   <div id="mapLib"></div>
 </div></div>
-
 <div class="modal" id="authModal"><div class="sheet auth-sheet">
   <button class="mclose" onclick="closeModal('authModal')">✕</button>
   <div class="mtitle">Врата таверны</div><div class="msub">аккаунт хранится локально в твоём браузере</div>
@@ -673,11 +657,8 @@ label.f input,label.f textarea{margin-top:6px}
     <div style="text-align:center;margin-top:12px"><button type="button" class="linkbtn" id="backLogin">← Вернуться ко входу</button></div>
   </form>
 </div></div>
-
 <div id="toasts"></div>
-
 <script>
-/* ══ 1. УТИЛИТЫ ══ */
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -693,15 +674,11 @@ function effRole(u){return u.role==='dm'?'admin':(u.role||'pl');}
 function blobToDataUrl(b){return new Promise(res=>{const fr=new FileReader();fr.onload=()=>res(fr.result);fr.readAsDataURL(b);});}
 const fmt=n=>(n>=0?'+':'')+n;
 const modOf=score=>Math.floor(((+score||0)-10)/2);
-const slug=s=>String(s||'').toLowerCase().replace(/[^a-z0-9а-яё]/gi,'').slice(0,24)||'x';
 const SECRET_ICON={snare:'🪤',trap:'⚠',secret:'🗝'};
 function genRecoveryKey(){const w=['волк','руна','пламя','камень','луна','сталь','пепел','клык','ворон','дуб','медь','тень','ветер','скала','огонь','лёд'];const p=()=>w[Math.floor(Math.random()*w.length)];return `${p()}-${p()}-${p()}-${10+Math.floor(Math.random()*90)}`;}
-/* единицы расстояния */
 function unitLabel(){return S.scale.unit==='ft'?'фт':'м';}
-function cellFeet(){return S.scale.unit==='ft'?S.scale.cell:(S.scale.cell===1.5?5:10);} /* 1.5м≈5фт, 3м≈10фт для расчёта скорости в футах */
+function cellFeet(){return S.scale.unit==='ft'?S.scale.cell:(S.scale.cell===1.5?5:10);}
 function feetToDisplay(ft){return S.scale.unit==='ft'?ft:Math.round(ft/3.28084*10)/10;}
-
-/* ══ 2. INDEXEDDB ══ */
 const DB={d:null,
   open(){return new Promise((res,rej)=>{const r=indexedDB.open('grimoire-d20',4);
     r.onupgradeneeded=e=>{const d=e.target.result;['users','kv','notes','quests','rolls','chars','items','tokens','secrets','tracks','maps'].forEach(s=>{if(!d.objectStoreNames.contains(s))d.createObjectStore(s,{keyPath:'id'});});};
@@ -711,8 +688,6 @@ const DB={d:null,
   get(s,id){return DB.p(DB.d.transaction(s).objectStore(s).get(id));},
   all(s){return DB.p(DB.d.transaction(s).objectStore(s).getAll());},
   del(s,id){return DB.p(DB.d.transaction(s,'readwrite').objectStore(s).delete(id));}};
-
-/* ══ 3. АУТЕНТИФИКАЦИЯ + РОЛИ + ВОССТАНОВЛЕНИЕ ══ */
 async function hash(s){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('');}catch(e){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return 'x'+h;}}
 function afterLogin(){closeModal('authModal');renderAuth();renderRtcUI();mapGates();homeStats();renderChars();renderToks();renderUsers();renderMusicGates();autoHostIfDM();PRESENCE.start(S.session.name,S.session.role);}
 function renderAuth(){const a=$('#authArea');
@@ -764,15 +739,11 @@ async function renderUsers(){const p=$('#rolePanel');if(!p)return;p.style.displa
   $('#userList').innerHTML=`<div class="urow super"><span class="useal">⚜</span><div><b>${SUPER.name}</b><div class="hand" style="font-size:12px;color:#6b5836">${SUPER.email}</div></div><span class="rbadge dm">Главный Мастер</span></div>`+
   (us.length?us.map(u=>`<div class="urow"><span class="useal">${esc(u.name[0].toUpperCase())}</span><div><b>${esc(u.name)}</b><div class="hand" style="font-size:12px;color:#6b5836">${esc(u.email||'без почты')}</div></div><span class="rbadge ${u.role==='admin'?'dm':'pl'}">${u.role==='admin'?'Мастер':'Игрок'}</span><span class="uact">${u.role==='admin'?`<button class="qbtn" data-role="${u.id}|pl" title="Понизить до игрока">↓</button>`:`<button class="qbtn" data-role="${u.id}|admin" title="Повысить до мастера">↑</button>`}</span></div>`).join(''):'<p class="hand" style="color:#6b5836">Пока никто не зарегистрировался.</p>');
   $$('[data-role]').forEach(b=>b.onclick=async()=>{const[id,r]=b.dataset.role.split('|');const u=await DB.get('users',id);u.role=r;await DB.put('users',u);renderUsers();toast(`${esc(u.name)} теперь ${r==='admin'?'Мастер':'Игрок'}`,'crit');});}
-
-/* ══ 4. РОУТЕР ══ */
 const PAGES={home:'Главная',classes:'Классы',races:'Расы',monsters:'Бестиарий',rules:'Правила',lore:'История мира',map:'Карта мира',party:'Комната партии',chars:'Персонажи',items:'Предметы',quests:'Задания'};
 function go(p){$$('.page').forEach(s=>s.classList.toggle('active',s.id==='page-'+p));$$('#nav [data-nav]').forEach(b=>b.classList.toggle('active',b.dataset.nav===p));$('#crumb').textContent=PAGES[p]||p;window.scrollTo({top:0,behavior:'smooth'});revealScan();}
 $$('#nav [data-nav],.brand').forEach(b=>b.addEventListener('click',()=>go(b.dataset.nav)));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}}),{threshold:.12});
 function revealScan(){$$('.rv:not(.on)').forEach(el=>io.observe(el));}
-
-/* ══ 5. СПРАВОЧНИКИ ══ */
 const CLASSES=[
  {n:'Варвар',en:'Barbarian',src:'PHB',hd:'d12',ab:'Сила',sv:'Сил, Тел',armor:'Лёгкие, средние, щиты',weap:'Простое, воинское',cast:'Нет',feat:['<b>Ярость</b> (1 ур.): преимущество на Силу, +2 к урону, сопротивление физ. урону.','<b>Защита без доспехов</b>: КД = 10 + Ловк. + Тел.','<b>Безрассудная атака</b> (2 ур.).','<b>Чутьё на опасность</b> (2 ур.).','<b>Доп. атака</b> (5 ур.) и +10 фт.','<b>Непреклонная ярость</b> (11 ур.).'],subs:['Путь берсерка','Путь тотемного воина','Путь предка-хранителя','Путь бури'],c:'#a3322b',cl:'#e0705f'},
  {n:'Бард',en:'Bard',src:'PHB',hd:'d8',ab:'Харизма',sv:'Лов, Хар',armor:'Лёгкие',weap:'Простое + рапира, длинный меч, лук',cast:'Да (Харизма)',feat:['<b>Заговоры и ячейки</b> от Харизмы.','<b>Вдохновение барда</b> (1 ур.).','<b>Мастер на все руки</b> (2 ур.).','<b>Песнь отдыха</b> (2 ур.).','<b>Источник вдохновения</b> (5 ур.).'],subs:['Коллегия знаний','Коллегия доблести','Коллегия мечей','Коллегия шёпотов'],c:'#7a4a8a',cl:'#b98ad0'},
@@ -866,8 +837,6 @@ const RULES=[
 function renderRules(){$('#rulesNav').innerHTML=RULES.map((r,i)=>`<button data-r="${i}">${r.icon}&nbsp; ${r.t}</button>`).join('');
   $('#rulesBody').innerHTML=RULES.map((r,i)=>`<div class="rsec" id="rsec${i}"><details${i===0?' open':''}><summary><span class="ric">${r.icon}</span>${r.t}<span class="arr">▶</span></summary><div class="rbody">${r.html}</div></details></div>`).join('');
   $$('#rulesNav [data-r]').forEach(b=>b.onclick=()=>{$('#rsec'+b.dataset.r+' details').open=true;$$('#rulesNav button').forEach(x=>x.classList.toggle('on',x===b));$('#rsec'+b.dataset.r).scrollIntoView({behavior:'smooth',block:'start'});});}
-
-/* ══ 6. ЗАМЕТКИ / КВЕСТЫ / ПРЕДМЕТЫ ══ */
 let editNote=null;
 async function renderNotes(){const ns=(await DB.all('notes')).sort((a,b)=>b.time-a.time);
   $('#notesGrid').innerHTML=ns.map(n=>`<div class="note" style="--tilt:${(n.id.charCodeAt(4)%9-4)/4}deg"><button class="nx" data-del="${n.id}">✕</button><h4 data-edit="${n.id}">${esc(n.title)}</h4>${esc(n.body).replace(/\n/g,'<br>')}<div class="when">${new Date(n.time).toLocaleDateString('ru-RU')}</div></div>`).join('')||'<p class="hand" style="color:#6b5836">Летопись пуста.</p>';
@@ -888,8 +857,6 @@ async function renderItems(){const its=await DB.all('items');
   $('#itemsList').innerHTML=its.map(i=>{const[c,cl]=ITYPES[i.type]||ITYPES['Разное'];return `<div class="item"><span class="iseal" style="background:radial-gradient(circle at 35% 30%,${cl},${c})">${i.type[0]}</span><div><b style="color:var(--parch)">${esc(i.name)}</b><div class="hand" style="font-size:13px;color:#6b5836">${i.type}</div></div><span class="qty">×${i.qty}</span><button class="qbtn" data-idel="${i.id}">✕</button></div>`;}).join('')||'<p class="hand" style="color:#6b5836">Сумка пуста.</p>';
   $$('[data-idel]').forEach(b=>b.onclick=async()=>{await DB.del('items',b.dataset.idel);renderItems();});}
 $('#itAdd').onclick=async()=>{const n=$('#itName').value.trim();if(!n)return;await DB.put('items',{id:uid(),name:n,type:$('#itType').value,qty:+$('#itQty').value||1});$('#itName').value='';$('#itQty').value=1;renderItems();toast('🎒 Предмет в сумке');};
-
-/* ══ 7. ЛИСТ ПЕРСОНАЖА ══ */
 const ABS=['str','dex','con','int','wis','cha'];
 const ABNAME={str:'Сила',dex:'Ловкость',con:'Телосложение',int:'Интеллект',wis:'Мудрость',cha:'Харизма'};
 const SKILLS=[
@@ -931,7 +898,6 @@ function buildSheetHTML(e,mode){const s=e.sheet;const edit=mode==='edit';const D
   const pct=Math.max(0,Math.min(100,(+s.hp)/(+s.hpMax||1)*100));
   const initial=(e.name||'?')[0].toUpperCase();
   let html=`<div class="csheet">`;
-  /* шапка с медальоном и живой полосой хитов */
   html+=`<div class="cs-head"><div class="cs-portrait">${esc(initial)}</div>
     <div class="cs-headinfo">
       <div class="nm">${edit?`<input value="${esc(e.name||'')}" data-f="name" placeholder="Имя персонажа">`:`<span>${esc(e.name||'—')}</span>`}</div>
@@ -946,9 +912,7 @@ function buildSheetHTML(e,mode){const s=e.sheet;const edit=mode==='edit';const D
       <div class="cs-hpbarwrap"><div class="lb"><span>Хиты</span><span>${edit?'':((+s.hp)+'/'+(+s.hpMax))}</span></div><div class="bar"><i style="width:${pct}%;background:${hpColor(pct)}"></i></div></div>
       <div class="cs-hpbarwrap" style="border-color:#43331c"><div class="lb" style="color:#6b5836"><span>Скорость</span><span>${edit?'':(feetToDisplay(+s.speedFeet||30)+' '+unitLabel())}</span></div>${edit?`<input type="number" data-top="speedFeet" value="${+s.speedFeet||30}" style="text-align:center;margin-top:4px" title="в футах">`:''}</div>
     </div></div>`;
-  /* вкладки */
   html+=`<div class="cs-tabs">${SHEET_TABS.map((t,i)=>`<button type="button" class="cs-tab${i===0?' on':''}" data-tab="${t[0]}">${t[1]}</button>`).join('')}</div>`;
-  /* ПАНЕЛЬ 1 — характеристики */
   html+=`<div class="cs-pane on" data-pane="stats"><div class="cs-grid"><div class="cs-col"><div class="cs-sec cs-stat"><div class="cs-h"><span class="ico">🛡</span>Характеристики и навыки</div>
     <div class="cs-minis" style="margin-bottom:8px">
       <div class="cs-mini"><div class="lb">Бонус мастерства</div>${edit?`<input type="number" value="${+s.proficiency||0}" data-top="proficiency">`:`<div class="ro">${fmt(+s.proficiency||0)}</div>`}</div>
@@ -963,7 +927,6 @@ function buildSheetHTML(e,mode){const s=e.sheet;const edit=mode==='edit';const D
         ${sks.map(sk=>`<div class="cs-skill" data-skillab="${a}">${edit?`<input type="checkbox" class="prof" data-skillp="${sk.k}" ${s.skills[sk.k]?'checked':''}>`:`<span class="prof-dot ${s.skills[sk.k]?'on':''}"></span>`}<span class="nm">${sk.n}</span><span class="cs-bonus" data-skill="${sk.k}">${fmt(D.skillB[sk.k])}</span></div>`).join('')}
       </div></div>`;});
   html+=`</div></div><div class="cs-col"><div class="cs-sec cs-feat" style="--sc:var(--c-stat)"><div class="cs-h"><span class="ico">📖</span>Подсказка</div><p class="hand" style="color:var(--dim);font-size:14px">Наведи на характеристику — подсветятся её модификатор и все связанные навыки/спасброски. Поставь ромбик ◆ у спасброска и кружок у навыка, если персонаж ими владеет — бонус мастерства прибавится сам.</p></div></div></div></div>`;
-  /* ПАНЕЛЬ 2 — бой и защита */
   html+=`<div class="cs-pane" data-pane="combat"><div class="cs-col">
     <div class="cs-sec cs-hp"><div class="cs-h"><span class="ico">❤</span>Защита и хиты</div>
       <div class="cs-minis" style="margin-bottom:10px">
@@ -988,7 +951,6 @@ function buildSheetHTML(e,mode){const s=e.sheet;const edit=mode==='edit';const D
         <td>${edit?`<input data-atk="${i}|range" value="${esc(at.range||'')}">`:`<span class="ro">${esc(at.range||'—')}</span>`}</td>
         ${edit?`<td><button type="button" class="qbtn" data-atkdel="${i}">✕</button></td>`:''}</tr>`).join(''):`<tr><td colspan="${edit?6:5}" class="hand" style="color:#6b5836;padding:8px">нет атак</td></tr>`}
       </table></div></div></div>`;
-  /* ПАНЕЛЬ 3 — магия и монеты */
   html+=`<div class="cs-pane" data-pane="magic"><div style="display:grid;grid-template-columns:1.4fr 1fr;gap:10px;align-items:start">
     <div class="cs-sec cs-mag"><div class="cs-h"><span class="ico">✨</span>Заклинания</div><div class="cs-magrow">
       <div class="mr"><span class="lb">Базовая хар-ка</span>${edit?`<input data-spell="ability" value="${esc(s.spell.ability)}">`:`<span class="ro" style="font-size:14px;color:var(--ink)">${esc(s.spell.ability||'—')}</span>`}</div>
@@ -998,9 +960,7 @@ function buildSheetHTML(e,mode){const s=e.sheet;const edit=mode==='edit';const D
     <div class="cs-sec cs-coin"><div class="cs-h"><span class="ico">🪙</span>Монеты</div><div class="cs-coins">
       ${COINS.map(c=>`<div class="cs-coinrow"><span class="cl" style="background:${c[2]}">${c[1]}</span>${edit?`<input type="number" data-coin="${c[0]}" value="${+s.coins[c[0]]||0}">`:`<span class="ro">${+s.coins[c[0]]||0}</span>`}</div>`).join('')}
     </div></div></div></div>`;
-  /* ПАНЕЛЬ 4 — черты */
   html+=`<div class="cs-pane" data-pane="extra"><div class="cs-sec cs-feat"><div class="cs-h"><span class="ico">📜</span>Черты, особенности, заметки</div>${edit?`<textarea data-top="features">${esc(s.features)}</textarea>`:`<div class="ro">${s.features?esc(s.features):'—'}</div>`}</div></div>`;
-  /* футер */
   html+=`<div class="cs-savebar">`;
   if(edit){
     if(e.__kind==='token')html+=`<label class="cs-reveal" style="flex:none"><input type="checkbox" data-top="revealed" ${s.revealed?'checked':''}> <span>Показывать лист игрокам</span></label>`;
@@ -1017,7 +977,6 @@ function recompute(root){const tmp={proficiency:+(root.querySelector('[data-top=
   ABS.forEach(a=>{const el=root.querySelector(`[data-save="${a}"]`);if(el)el.textContent=fmt(D.saveB[a]);const md=root.querySelector(`[data-mod="${a}"]`);if(md)md.textContent=fmt(D.m[a]);});
   SKILLS.forEach(sk=>{const el=root.querySelector(`[data-skill="${sk.k}"]`);if(el)el.textContent=fmt(D.skillB[sk.k]);});
   const pp=root.querySelector('[data-calc="passive"]');if(pp)pp.textContent=D.passive;
-  /* живая полоса хитов в шапке */
   const hp=root.querySelector('[data-top="hp"]'),hm=root.querySelector('[data-top="hpMax"]');
   if(hp&&hm){const p=Math.max(0,Math.min(100,(+hp.value||0)/(+hm.value||1)*100));const bar=root.querySelector('.cs-hpbarwrap .bar i');if(bar){bar.style.width=p+'%';bar.style.background=hpColor(p);}}}
 function collectSheet(root,base){const s=JSON.parse(JSON.stringify(base));
@@ -1035,7 +994,6 @@ function wireSheet(root,entity){
   root.querySelectorAll('.cs-tab').forEach(b=>b.onclick=()=>{root.querySelectorAll('.cs-tab').forEach(x=>x.classList.toggle('on',x===b));root.querySelectorAll('.cs-pane').forEach(p=>p.classList.toggle('on',p.dataset.pane===b.dataset.tab));});
   root.addEventListener('input',()=>recompute(root));
   root.addEventListener('change',e=>{if(e.target.classList.contains('prof'))recompute(root);});
-  /* hover-связи: наведение на навык подсвечивает его характеристику */
   root.querySelectorAll('.cs-skill').forEach(sk=>{const a=sk.dataset.skillab;sk.addEventListener('mouseenter',()=>{const ab=root.querySelector(`.cs-ab[data-ab="${a}"]`);if(ab)ab.classList.add('linked');sk.classList.add('hot');});sk.addEventListener('mouseleave',()=>{const ab=root.querySelector(`.cs-ab[data-ab="${a}"]`);if(ab)ab.classList.remove('linked');sk.classList.remove('hot');});});
   const addAtk=root.querySelector('#addAtk');if(addAtk)addAtk.onclick=()=>{entity.sheet.attacks.push({name:'',atk:'',dmg:'',type:'',range:''});rerenderSheet(root,entity);};
   root.querySelectorAll('[data-atkdel]').forEach(b=>b.onclick=()=>{entity.sheet.attacks.splice(+b.dataset.atkdel,1);rerenderSheet(root,entity);});
@@ -1045,9 +1003,8 @@ function wireSheet(root,entity){
     await DB.put(entity.__kind==='token'?'tokens':'chars',entity);
     RTC.send({type:entity.__kind==='token'?'tok':'char',t:entity.__kind==='token'?entity:undefined,c:entity.__kind==='char'?entity:undefined});
     if(entity.__kind==='token')renderToks();else renderChars();
-    const flash=document.createElement('div');flash.className='cs-savedflash';root.querySelector('.cs-head').appendChild(flash);
     closeModal('sheetModal');toast('📋 Лист сохранён','crit');};}
-function rerenderSheet(root,entity){const mode='edit';const active=root.querySelector('.cs-tab.on')?.dataset.tab||'stats';root.innerHTML=buildSheetHTML(entity,mode);wireSheet(root,entity);recompute(root);const t=root.querySelector(`.cs-tab[data-tab="${active}"]`);if(t)t.click();}
+function rerenderSheet(root,entity){const active=root.querySelector('.cs-tab.on')?.dataset.tab||'stats';root.innerHTML=buildSheetHTML(entity,'edit');wireSheet(root,entity);recompute(root);const t=root.querySelector(`.cs-tab[data-tab="${active}"]`);if(t)t.click();}
 function openCharSheet(entity,kind){const dm=isDM();ensureSheet(entity);entity.__kind=kind;
   let canEdit,canView;
   if(kind==='token'){canEdit=dm;canView=dm||entity.sheet.revealed;}
@@ -1060,8 +1017,6 @@ function openCharSheet(entity,kind){const dm=isDM();ensureSheet(entity);entity._
   const root=$('#sheetBody');root.innerHTML=buildSheetHTML(entity,mode);
   if(mode==='edit')wireSheet(root,entity);
   $('#sheetModal').classList.add('open');}
-
-/* ══ 7b. ПЕРСОНАЖИ ══ */
 function ownsChar(c){return isDM()||(S.session&&S.charId===c.id);}
 async function renderChars(){const cs=await DB.all('chars');cs.forEach(ensureSheet);
   $('#charsGrid').innerHTML=cs.map(c=>{const sh=c.sheet;const pct=Math.max(0,Math.min(100,(+sh.hp)/(+sh.hpMax||1)*100));const mine=S.charId===c.id;const canEdit=ownsChar(c);
@@ -1076,16 +1031,13 @@ $('#chSave').onclick=async()=>{const n=$('#chName').value.trim();if(!n)return;co
   const c={id:uid(),name:n,race:$('#chRace').value||'?',cls:$('#chClass').value||'?',lvl,hp,hpMax:hp,ac,sheet:defaultSheet({race:$('#chRace').value,cls:$('#chClass').value,lvl,hp,ac})};
   c.sheet.banner.race=c.race;c.sheet.banner.className=c.cls;c.sheet.banner.level=lvl;
   await DB.put('chars',c);$('#chName').value='';$('#charForm').style.display='none';renderChars();toast('⚔ Герой в партии!');RTC.send({type:'char',c});};
-/* пассивная внимательность закреплённого героя (для проверки тайников) */
-function myPassivePerception(){if(!S.charId)return null;return DB.get('chars',S.charId).then(c=>{if(!c)return null;ensureSheet(c);return derive(c.sheet).passive;});}
-
-/* ══ 8. КАРТА, ФИШКИ, СЕКРЕТЫ, ЛИНЕЙКА, ДОСЯГАЕМОСТЬ ══ */
+function myPassivePerception(){if(!S.charId)return Promise.resolve(null);return DB.get('chars',S.charId).then(c=>{if(!c)return null;ensureSheet(c);return derive(c.sheet).passive;});}
 const board=$('#board'),overlay=$('#overlay');let tokColor='#c0392b',drag=null,curMapObjUrl=null;
 const PALETTE=['#c0392b','#2e6fd8','#2f9e63','#d8a02e','#8e44ad','#e67e22','#4aa3a3','#7f8c8d'];
 $('#swatches').innerHTML=PALETTE.map(c=>`<span class="sw${c===tokColor?' on':''}" data-c="${c}" style="background:${c}"></span>`).join('');
 $$('.sw').forEach(s=>s.onclick=()=>{tokColor=s.dataset.c;$$('.sw').forEach(x=>x.classList.toggle('on',x===s));});
 $('#tokKind').onchange=e=>{$('#tokDC').style.display=e.target.value==='token'?'none':'inline-block';};
-function mapGates(){const dm=isDM();$('#btnUpload').style.display=dm?'grid':'none';$('#btnDelMap').style.display=dm?'grid':'none';$('#btnClearTok')&&($('#btnClearTok').style.display=dm?'grid':'none');$('#saveMap').style.display=dm?'inline-block':'none';$('#mapHint').textContent=dm?'ты Мастер: фишки + скрытые маркеры со Сл':(S.session?'ты Игрок: 👁 проверка Внимательности открывает тайники':'гость: войди, чтобы действовать');}
+function mapGates(){const dm=isDM();$('#btnUpload').style.display=dm?'grid':'none';$('#btnDelMap').style.display=dm?'grid':'none';if($('#btnClearTok'))$('#btnClearTok').style.display=dm?'grid':'none';$('#saveMap').style.display=dm?'inline-block':'none';$('#mapHint').textContent=dm?'ты Мастер: фишки + скрытые маркеры со Сл':(S.session?'ты Игрок: 👁 проверка Внимательности открывает тайники':'гость: войди, чтобы действовать');}
 function setScaleFromSelect(v){if(v==='ft5')S.scale={cell:5,unit:'ft'};else if(v==='ft10')S.scale={cell:10,unit:'ft'};else if(v==='m1')S.scale={cell:1.5,unit:'m'};else S.scale={cell:3,unit:'m'};DB.put('kv',{id:'mapmeta',scale:S.scale});}
 $('#unitSel').onchange=e=>{setScaleFromSelect(e.target.value);toast('Масштаб: '+e.target.options[e.target.selectedIndex].text);};
 $('#btnUpload').onclick=()=>$('#mapFile').click();
@@ -1095,10 +1047,9 @@ $('#btnGrid').onclick=()=>{S.grid=!S.grid;board.classList.toggle('grid',S.grid);
 $('#btnSnap').onclick=()=>{S.snap=!S.snap;$('#btnSnap').classList.toggle('off',!S.snap);};
 $('#btnFull').onclick=()=>{if(document.fullscreenElement)document.exitFullscreen();else if(board.requestFullscreen)board.requestFullscreen();};
 $('#btnDelMap').onclick=()=>{if(!isDM())return;S.mapData=null;S.mapName=null;if(curMapObjUrl)URL.revokeObjectURL(curMapObjUrl);curMapObjUrl=null;S.mapUrl=null;board.style.backgroundImage='';$('#boardMsg').style.display='grid';toast('Карта убрана со стола');};
-$('#btnClearTok').onclick=async()=>{if(!isDM())return;for(const t of S.tokens)await DB.del('tokens',t.id);for(const s of S.secrets)await DB.del('secrets',s.id);S.tokens=[];S.secrets=[];renderToks();RTC.send({type:'tokclear'});toast('Стол очищен');};
+if($('#btnClearTok'))$('#btnClearTok').onclick=async()=>{if(!isDM())return;for(const t of S.tokens)await DB.del('tokens',t.id);for(const s of S.secrets)await DB.del('secrets',s.id);S.tokens=[];S.secrets=[];renderToks();RTC.send({type:'tokclear'});toast('Стол очищен');};
 function canMove(owner){return isDM()||!owner||(S.session&&owner===S.session.name);}
-/* оверлей: круг досягаемости + линейка */
-function drawOverlay(){const r=board.getBoundingClientRect();const cw=48,cellPx=cw; /* клетки в px = var(--cell) */
+function drawOverlay(){const r=board.getBoundingClientRect();const cellPx=48;
   let svg='';
   if(drag&&drag.t&&drag.t.__speedFeet!==undefined){const cx=drag.startX/100*r.width,cy=drag.startY/100*r.height;const reachPx=(drag.t.__speedFeet/cellFeet())*cellPx;const dx=(drag.t.x-drag.startX)/100*r.width,dy=(drag.t.y-drag.startY)/100*r.height;const distPx=Math.hypot(dx,dy);const distCells=distPx/cellPx;const distFeet=distCells*cellFeet();const over=distPx>reachPx;
     svg+=`<circle cx="${cx}" cy="${cy}" r="${reachPx}" fill="${over?'rgba(192,57,43,.10)':'rgba(87,194,106,.10)'}" stroke="${over?'#e0564a':'#57c26a'}" stroke-width="2" stroke-dasharray="6 5"/>`;
@@ -1112,12 +1063,10 @@ function drawOverlay(){const r=board.getBoundingClientRect();const cw=48,cellPx=
     else svg+=`<circle cx="${x1}" cy="${y1}" r="4" fill="#7fb0e8"/>`;}
   overlay.innerHTML=svg;}
 async function renderToks(pulseId){board.querySelectorAll('.tok').forEach(t=>t.remove());
-  /* видимые фишки */
   S.tokens.forEach(t=>{ensureSheet(t);const el=document.createElement('div');el.className='tok';el.dataset.id=t.id;el.dataset.owner=t.owner||'';el.style.left=t.x+'%';el.style.top=t.y+'%';el.style.background=`radial-gradient(circle at 35% 30%, ${t.color}ee, ${t.color} 55%, #00000066)`;
     const hasSheet=isDM()||t.sheet.revealed;
     el.innerHTML=`<span>${esc((t.name||'?')[0].toUpperCase())}</span><span class="tn">${esc(t.name)}</span>${hasSheet?'<span class="tbadge">📋</span>':''}<button class="tx" data-del="${t.id}">✕</button>`;
     if(t.id===pulseId)el.classList.add('pulse');board.appendChild(el);});
-  /* скрытые маркеры: ДМ видит все; игрок — только раскрытые ему */
   const dm=isDM();
   const visibleSecrets=dm?S.secrets:S.secrets.filter(s=>S.revealedForMe.includes(s.id));
   visibleSecrets.forEach(s=>{const el=document.createElement('div');el.className='tok secret'+(dm?'':' found');el.dataset.id=s.id;el.style.left=s.x+'%';el.style.top=s.y+'%';
@@ -1132,31 +1081,25 @@ $('#btnAddTok').onclick=async()=>{const n=$('#tokName').value.trim()||'Безы�
   if(kind==='token'){const t={id:uid(),name:n,color:tokColor,x:40+Math.random()*20,y:40+Math.random()*20,owner:S.session?.name||'',sheet:defaultSheet({hp:10,ac:10})};ensureSheet(t);S.tokens.push(t);await DB.put('tokens',t);renderToks(t.id);RTC.send({type:'tok',t});}
   else{if(!isDM()){toast('Скрытые маркеры ставит только Мастер','fail');return;}const dc=+$('#tokDC').value||13;const s={id:uid(),kind,label:n,dc,x:40+Math.random()*20,y:40+Math.random()*20,revealedTo:[]};S.secrets.push(s);await DB.put('secrets',s);renderToks(s.id);toast(`${SECRET_ICON[kind]} Скрытый маркер поставлен (Сл ${dc}) — игроки не видят его`,'crit');}
   $('#tokName').value='';};
-/* pointer: клик = лист, drag = движение + оверлей; линейка = отдельные клики */
-board.addEventListener('pointerdown',e=>{if(S.measure!==null&&S.measure!==undefined&&$('#btnMeasure').classList.contains('on'))return; /* линейка обрабатывается в click */
+board.addEventListener('pointerdown',e=>{if($('#btnMeasure').classList.contains('on'))return;
   const el=e.target.closest('.tok');if(!el)return;if(e.target.closest('.tx'))return;
-  if(el.classList.contains('secret')){if(isDM()){/* ДМ клик по секрету — ничего, редактирование через форму при желании */}return;}
+  if(el.classList.contains('secret')){return;}
   const t=S.tokens.find(x=>x.id===el.dataset.id);if(!t)return;ensureSheet(t);t.__speedFeet=+t.sheet.speedFeet||30;
   drag={t,el,sx:e.clientX,sy:e.clientY,moved:false,pid:e.pointerId,startX:t.x,startY:t.y};});
 board.addEventListener('pointermove',e=>{if(!drag)return;
   if(!drag.moved){if(Math.hypot(e.clientX-drag.sx,e.clientY-drag.sy)<6)return;drag.moved=true;if(!canMove(drag.t.owner)){toast('Чужая фишка — двигает владелец или Мастер','fail');drag=null;drawOverlay();return;}drag.el.classList.add('drag');try{drag.el.setPointerCapture(drag.pid);}catch(_){}}
   const r=board.getBoundingClientRect();let x=(e.clientX-r.left)/r.width*100,y=(e.clientY-r.top)/r.height*100;x=Math.max(2,Math.min(98,x));y=Math.max(3,Math.min(96,y));if(S.snap){const cw=48/r.width*100,ch=48/r.height*100;x=Math.round(x/cw)*cw;y=Math.round(y/ch)*ch;}drag.t.x=x;drag.t.y=y;drag.el.style.left=x+'%';drag.el.style.top=y+'%';drawOverlay();if(!drag.th){drag.th=true;requestAnimationFrame(()=>{drag.th=false;if(drag)RTC.send({type:'tok',t:drag.t});});}});
 board.addEventListener('pointerup',async()=>{if(!drag)return;if(!drag.moved){openCharSheet(drag.t,'token');drag=null;drawOverlay();return;}drag.el.classList.remove('drag');await DB.put('tokens',drag.t);RTC.send({type:'tok',t:drag.t});drag=null;drawOverlay();});
-/* линейка расстояний */
-$('#btnMeasure').onclick=()=>{const on=$('#btnMeasure').classList.toggle('on');S.measure=on?{p1:null,p2:null}:null;if(!on)drawOverlay();board.style.cursor=on?'crosshair':'crosshair';toast(on?'📏 Линейка: кликни две точки на карте':'Линейка выключена');};
+$('#btnMeasure').onclick=()=>{const on=$('#btnMeasure').classList.toggle('on');S.measure=on?{p1:null,p2:null}:null;if(!on)drawOverlay();toast(on?'📏 Линейка: кликни две точки на карте':'Линейка выключена');};
 board.addEventListener('click',e=>{if(!$('#btnMeasure').classList.contains('on'))return;if(e.target.closest('.tok'))return;const r=board.getBoundingClientRect();const p={x:(e.clientX-r.left)/r.width*100,y:(e.clientY-r.top)/r.height*100};if(!S.measure.p1)S.measure.p1=p;else if(!S.measure.p2){S.measure.p2=p;}else{S.measure={p1:p,p2:null};}drawOverlay();});
-/* проверка Внимательности */
 $('#btnPercept').onclick=async()=>{const passive=await myPassivePerception();const mod=passive!==null?(passive-10):0;const roll=1+Math.floor(Math.random()*20);const total=roll+mod;
   const entry={id:uid(),time:Date.now(),who:S.session?.name||'Гость',formula:`(1d20+${mod})`,detail:[{s:20,r:roll}],total,raw:roll,remote:false};saveRoll(entry);
   feedAdd(`👁 <b>${esc(entry.who)}</b> всматривается: ${esc(entry.formula)} → <b>${total}</b>`,'roll');
   if(RTC.isOpen()&&!isDM()){RTC.send({type:'perception',who:entry.who,total,passive:passive});toast(`👁 Проверка Внимательности: <b>${total}</b> — отправлено Мастеру`);}
-  else{ /* локально (одиночная игра / ДМ) — сравнить с секретами */
-    const found=applyPerceptionLocal(entry.who,total,passive);
+  else{const found=applyPerceptionLocal(entry.who,total,passive);
     toast(found?`👁 Внимательность <b>${total}</b>: что-то замечаешь!`:`👁 Внимательность <b>${total}</b>: ничего необычного`,found?'find':'');}
   renderToks();};
 function applyPerceptionLocal(who,total,passive){let any=false;S.secrets.forEach(s=>{const passed=Math.max(total,passive||0)>=+s.dc;if(passed&&!S.revealedForMe.includes(s.id)){S.revealedForMe.push(s.id);any=true;feedAdd(`🔍 Обнаружено: ${SECRET_ICON[s.kind]} <b>${esc(s.label||s.kind)}</b>!`,'find');}});localStorage.setItem('d20revealed',JSON.stringify(S.revealedForMe));return any;}
-
-/* библиотека карт */
 $('#btnLib').onclick=()=>{renderMapLib();$('#libModal').classList.add('open');};
 async function renderMapLib(){const ms=(await DB.all('maps')).sort((a,b)=>b.time-a.time);const dm=isDM();
   $('#mapLib').innerHTML=ms.length?ms.map(m=>`<div class="librow"><img src="${URL.createObjectURL(m.blob)}"><div><b>${esc(m.name)}</b><div class="hand" style="font-size:12px;color:#6b5836">${new Date(m.time).toLocaleDateString('ru-RU')} · фишек: ${(m.tokens||[]).length}</div></div>${dm?`<button class="qbtn" data-mload="${m.id}" title="Загрузить">⬆</button><button class="qbtn" data-mdel="${m.id}" title="Удалить">✕</button>`:''}</div>`).join(''):'<p class="hand" style="color:#6b5836">Библиотека пуста.</p>';
@@ -1174,8 +1117,6 @@ async function loadMap(id){if(!isDM())return;const m=await DB.get('maps',id);if(
   renderToks();RTC.send({type:'tokclear'});S.tokens.forEach(t=>RTC.send({type:'tok',t}));
   RTC.conns.forEach(c=>{if(c.open)RTC.sendFileTo(c,'map',{id:'map'},S.mapData);});
   closeModal('libModal');toast('🗺 Загружено: '+esc(m.name),'crit');}
-
-/* ══ 9. КУБИКИ ══ */
 const DICE=[{s:4,g:'gBlue',d:'M32 5 60 57 4 57Z',f:'M32 5V38M60 57 32 38M4 57 32 38',ty:50,fs:12},{s:6,g:'gBlue',d:'M14 7h36q7 0 7 7v36q0 7-7 7H14q-7 0-7-7V14q0-7 7-7z',f:'M12 20q0-8 8-8',ty:38,fs:15},{s:8,g:'gBlue',d:'M32 4 60 32 32 60 4 32Z',f:'M4 32h56M32 4v12M32 48v12',ty:38,fs:14},{s:10,g:'gBlue',d:'M32 4 58 30 46 60 18 60 6 30Z',f:'M6 30h52',ty:47,fs:13},{s:12,g:'gRed',d:'M21 6h22l17 26-28 28L4 32Z',f:'M24 13h16l12 18-20 20-20-20z',ty:38,fs:14},{s:20,g:'gBlue',d:'M32 3 57 17v30L32 61 7 47V17Z',f:'M32 15 48 42H16ZM32 3v12M57 17 32 15M57 17 48 42M57 47 48 42M32 61 48 42M32 61 16 42M7 47 16 42M7 17 16 42M7 17 32 15',ty:38,fs:13},{s:100,g:'gBlack',d:'M32 4 58 30 46 60 18 60 6 30Z',f:'M6 30h52',ty:47,fs:12,txt:'%'}];
 function dieSVG(d){return `<svg viewBox="0 0 64 64" width="58"><path d="${d.d}" fill="url(#${d.g})" stroke="rgba(255,255,255,.55)" stroke-width="1.6"/><path d="${d.f}" stroke="rgba(255,255,255,.3)" stroke-width="1.1" fill="none"/><text x="32" y="${d.ty}" text-anchor="middle" font-family="Alegreya" font-weight="700" font-size="${d.fs}" fill="#fff" stroke="rgba(0,0,0,.35)" stroke-width=".6" paint-order="stroke">${d.txt||d.s}</text></svg>`;}
 $('#tray').innerHTML=DICE.map(d=>`<button class="die" data-s="${d.s}">${dieSVG(d)}<span>d${d.s}</span></button>`).join('');
@@ -1195,8 +1136,6 @@ function closeModal(id){$('#'+id).classList.remove('open');}
 $$('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')$$('.modal.open').forEach(m=>m.classList.remove('open'));});
 $('#megaRoll').onclick=function(){this.classList.remove('rolling');void this.offsetWidth;this.classList.add('rolling');const n=$('#megaNum');let i=0;const iv=setInterval(()=>{n.textContent=1+Math.floor(Math.random()*20);tick(300+i*30,.05);if(++i>7){clearInterval(iv);const r=1+Math.floor(Math.random()*20);n.textContent=r;const entry={id:uid(),time:Date.now(),who:S.session?.name||'Гость',formula:'(1d20)',detail:[{s:20,r}],total:r,raw:r,remote:false};saveRoll(entry);RTC.send({type:'roll',entry});feedAdd(r===20?`🌟 КРИТ на главной! <b>${r}</b>`:r===1?`💀 Единица… <b>${r}</b>`:`🎲 d20 → <b>${r}</b>`,'roll'+(r===20?' crit':''));toast(r===20?`★ d20 → <b>${r}</b> · КРИТ!`:r===1?`✝ d20 → <b>${r}</b> · провал`:`d20 → <b>${r}</b>`,r===20?'crit':r===1?'fail':'');r===20?setTimeout(()=>tick(880,.2),100):r===1?tick(160,.3):tick(600,.12);}},70);};
-
-/* ══ 10. МУЗЫКА ══ */
 const audio=new Audio();audio.volume=.7;
 function curTrack(){return S.tracks.find(t=>t.id===S.music.trackId);}
 function applyMusic(m){if(m.id!==undefined&&m.id!==null)S.music.trackId=m.id;const t=curTrack();
@@ -1227,8 +1166,6 @@ $('#mPause').onclick=()=>{if(S.music.playing)dmPause();};
 $('#mStop').onclick=()=>dmStop();
 $('#vol').oninput=e=>{audio.volume=e.target.value/100;};
 audio.addEventListener('ended',()=>{if(isDM())dmStop();});
-
-/* ══ 11. СВЯЗЬ (PeerJS) + секреты по проверке ══ */
 function roomCode(){const w=['WOLF','RAVEN','EMBER','STONE','MOON','IRON','ASH','FANG'][Math.floor(Math.random()*8)];return `${w}-${1000+Math.floor(Math.random()*9000)}`;}
 const RTC={peer:null,conns:[],hostConn:null,roomId:null,fbuf:{},
   isOpen(){return isDM()?this.conns.some(c=>c.open):(this.hostConn&&this.hostConn.open);},
@@ -1244,10 +1181,9 @@ const RTC={peer:null,conns:[],hostConn:null,roomId:null,fbuf:{},
     conn.on('open',async()=>{setConn(true);feedAdd('🔗 Соединение установлено!','chat');
       const passive=await myPassivePerception();
       conn.send({type:'hello',who:S.session?.name||'Гость',role:S.session?.role||'guest',passive});
-      if(isHost){renderPlayerList();conn._who=conn._who||'?';
+      if(isHost){renderPlayerList();
         for(const id in S.trackData)RTC.sendFileTo(conn,'track',{id,name:(S.tracks.find(t=>t.id===id)||{}).name||id},S.trackData[id]);
         if(S.music.trackId)conn.send({type:'music',m:{cmd:S.music.playing?'play':'pause',id:S.music.trackId,time:S.music.playing?audio.currentTime:S.music.time,ts:Date.now()}});
-        /* пассивное раскрытие секретов новому игроку */
         if(passive!==null)S.secrets.forEach(s=>{if(passive>=+s.dc&&!(s.revealedTo||[]).includes(conn._who)){conn.send({type:'reveal',s:{id:s.id,kind:s.kind,label:s.label,x:s.x,y:s.y}});}});
       }});
     conn.on('close',()=>{if(isHost){this.conns=this.conns.filter(c=>c!==conn);renderPlayerList();feedAdd('Игрок покинул стол');}else{setConn(false);feedAdd('Связь с мастером прервана');}});
@@ -1257,10 +1193,9 @@ const RTC={peer:null,conns:[],hostConn:null,roomId:null,fbuf:{},
   relay(m,from){this.conns.forEach(c=>{if(c!==from&&c.open)c.send(m);});},
   async handle(m,conn,isHost){switch(m.type){
     case 'hello':if(isHost){conn._who=m.who;conn._role=m.role;renderPlayerList();feedAdd(`👋 За столом: <b>${esc(m.who)}</b> (${ROLENAME[m.role]||'Игрок'})`,'chat');toast(`За столом: <b>${esc(m.who)}</b>`);for(const c of await DB.all('chars'))conn.send({type:'char',c});for(const q of await DB.all('quests'))conn.send({type:'quest',q});for(const t of S.tokens)conn.send({type:'tok',t});
-      /* пассивное раскрытие */
       if(m.passive!==null)S.secrets.forEach(s=>{if(m.passive>=+s.dc&&!(s.revealedTo||[]).includes(m.who)){s.revealedTo=s.revealedTo||[];s.revealedTo.push(m.who);DB.put('secrets',s);conn.send({type:'reveal',s:{id:s.id,kind:s.kind,label:s.label,x:s.x,y:s.y}});feedAdd(`🔍 <b>${esc(m.who)}</b> пассивно замечает ${SECRET_ICON[s.kind]} ${esc(s.label||s.kind)}`,'find');}});
     }else{feedAdd(`👋 Подключено к мастеру`,'chat');toast('Соединение с мастером установлено','crit');}break;
-    case 'perception':if(isHost){/* игрок бросил внимательность — мастер сравнивает */
+    case 'perception':if(isHost){
       let revealed=[];S.secrets.forEach(s=>{if(m.total>=+s.dc&&!(s.revealedTo||[]).includes(m.who)){s.revealedTo=s.revealedTo||[];s.revealedTo.push(m.who);revealed.push(s);}});
       if(revealed.length){revealed.forEach(s=>{DB.put('secrets',s);conn.send({type:'reveal',s:{id:s.id,kind:s.kind,label:s.label,x:s.x,y:s.y}});});feedAdd(`🔍 <b>${esc(m.who)}</b> (бросок ${m.total}) обнаруживает: ${revealed.map(s=>SECRET_ICON[s.kind]+' '+esc(s.label||s.kind)).join(', ')}`,'find');}
       else feedAdd(`👁 <b>${esc(m.who)}</b> всматривается (${m.total}) — ничего не находит`);
@@ -1291,8 +1226,6 @@ function feedAdd(html,cls=''){const f=$('#feed');const hint=f.querySelector('.em
 function sendChat(){const v=$('#chatIn').value.trim();if(!v)return;const who=S.session?.name||'Гость';feedAdd(`💬 <b>${esc(who)}</b>: ${esc(v)}`,'chat');RTC.send({type:'chat',who,text:v});$('#chatIn').value='';}
 $('#chatSend').onclick=sendChat;$('#chatIn').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
 async function autoHostIfDM(){if(isDM()&&!RTC.peer){try{const code=await RTC.hostRoom();$('#roomCodeOut').textContent=code;feedAdd(`Комната открыта: код <b>${code}</b>`,'chat');}catch(e){}}}
-
-/* ══ 12. ПРИСУТСТВИЕ «КТО В ТАВЕРНЕ» (лобби PeerJS) ══ */
 const LOBBY_ID='grimoire-d20-lobby-v1';
 const PRESENCE={peer:null,isHost:false,list:[],hb:null,watch:null,retries:0,
   start(who,role){this.stop();this.who=who;this.role=role;this.list=[];this.retries=0;this.tryHost();},
@@ -1302,7 +1235,7 @@ const PRESENCE={peer:null,isHost:false,list:[],hb:null,watch:null,retries:0,
       this.peer.on('connection',c=>{c.on('open',()=>{c.on('data',m=>{if(m&&m.t==='hi'){const ex=this.list.find(x=>x.name===m.who);if(ex)ex.last=Date.now();else{this.list.push({name:m.who,role:m.role,last:Date.now()});}c._who=m.who;this.broadcast();renderPresence();}});c.on('close',()=>{this.list=this.list.filter(x=>x.name!==c._who);this.broadcast();renderPresence();});});});
       this.hb=setInterval(()=>this.broadcast(),5000);
       this.watch=setInterval(()=>this.prune(),4000);});
-    this.peer.on('error',err=>{if(err.type==='unavailable-id'||err.type==='peer-unavailable'){this.tryJoin();}else{this.tryJoin();}});},
+    this.peer.on('error',err=>{this.tryJoin();});},
   tryJoin(){try{if(this.peer){try{this.peer.destroy();}catch(e){}}this.peer=new Peer({debug:0});}catch(e){this.giveUp();return;}
     this.peer.on('open',()=>{const conn=this.peer.connect(LOBBY_ID,{reliable:true});this.conn=conn;let opened=false;
       conn.on('open',()=>{opened=true;this.retries=0;conn.send({t:'hi',who:this.who,role:this.role});});
@@ -1311,18 +1244,16 @@ const PRESENCE={peer:null,isHost:false,list:[],hb:null,watch:null,retries:0,
       this.watch=setTimeout(()=>{if(!opened){this.retries++;if(this.retries<3)this.tryHost();else this.giveUp();}},3000);});
     this.peer.on('error',()=>{this.retries++;if(this.retries<3)setTimeout(()=>this.tryHost(),1500);else this.giveUp();});},
   reconnect(){clearTimeout(this.watch);this.tryJoin();},
-  giveUp(){/* signaling недоступен — показываем только себя локально */this.list=[{name:this.who,role:this.role,me:true,offline:true}];renderPresence();},
+  giveUp(){this.list=[{name:this.who,role:this.role,me:true,offline:true}];renderPresence();},
   broadcast(){if(!this.isHost||!this.peer)return;const payload={t:'list',list:this.list.map(x=>({name:x.name,role:x.role}))};this.peer.connections&&Object.values(this.peer.connections).forEach(arr=>arr.forEach(c=>{if(c.open)c.send(payload);}));},
   prune(){const now=Date.now();const before=this.list.length;this.list=this.list.filter(x=>x.me||(now-(x.last||now))<15000);if(this.list.length!==before){this.broadcast();renderPresence();}}};
 function renderPresence(){const live=PRESENCE.list.length?PRESENCE.list:(S.session?[{name:S.session.name,role:S.session.role,me:true,offline:true}]:[]);
   const online=live.filter(x=>!x.offline).length;
   $('#presCount').textContent='в таверне: '+(live.length?online+' из '+live.length:'—');
   $('#presLive').className='live'+(online>0?'':' off');
-  $('#presList').innerHTML=live.length?live.map(x=>`<div class="pres-row"><i class="${x.offline?'off':(x.me?'on':'on')}"></i>${esc(x.name)}${x.me?' <span style="color:#6b5836">(ты)</span>':''}<span class="pr">${ROLENAME[x.role]||''}</span></div>`).join(''):'<div class="pres-empty">никого не видно</div>';}
+  $('#presList').innerHTML=live.length?live.map(x=>`<div class="pres-row"><i class="${x.offline?'off':'on'}"></i>${esc(x.name)}${x.me?' <span style="color:#6b5836">(ты)</span>':''}<span class="pr">${ROLENAME[x.role]||''}</span></div>`).join(''):'<div class="pres-empty">никого не видно</div>';}
 $('#presBtn').onclick=()=>$('#pres').classList.toggle('open');
 document.addEventListener('click',e=>{if(!e.target.closest('#pres'))$('#pres').classList.remove('open');});
-
-/* ══ 13. ИНИЦИАЛИЗАЦИЯ ══ */
 function homeStats(){const r=S.session?S.session.role:'—';$('#homeStats').innerHTML=`<span class="hstat"><b>${ROLENAME[r]||'Гость'}</b>роль</span><span class="hstat"><b>${S.rolls.length}</b>бросков</span><span class="hstat"><b style="color:${RTC.isOpen()?'#57c26a':'#c96a60'}">●</b>стол</span>`;}
 function embers(){const fx=$('#fx');for(let i=0;i<22;i++){const s=document.createElement('i');const sz=3+Math.random()*5;s.style.cssText=`left:${Math.random()*100}%;width:${sz}px;height:${sz}px;--sw:${(Math.random()*120-60)}px;animation-duration:${9+Math.random()*14}s;animation-delay:-${Math.random()*20}s`;fx.appendChild(s);}}
 async function seed(){if(await DB.get('kv','seeded'))return;await DB.put('kv',{id:'seeded',v:1});
