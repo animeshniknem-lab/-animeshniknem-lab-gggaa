@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Гримуар d20 — стол приключений</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Neucha&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6f97e8"/><stop offset=".55" stop-color="#3f6fd1"/><stop offset="1" stop-color="#27478f"/></linearGradient>
+<linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e0705f"/><stop offset=".55" stop-color="#c23b33"/><stop offset="1" stop-color="#7e1f18"/></linearGradient>
+<linearGradient id="gBlack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a54"/><stop offset=".55" stop-color="#232329"/><stop offset="1" stop-color="#0f0f13"/></linearGradient>
+</defs></svg>
+<div class="fx" id="fx"></div>
+
+<aside class="side">
+  <a class="brand" data-nav="home">
+    <svg viewBox="0 0 64 64"><polygon points="32,3 57,17 57,47 32,61 7,47 7,17" fill="url(#gBlue)" stroke="#9db8ef" stroke-width="2"/><path d="M32 15 48 42 H16 Z M32 3 V15 M57 17 32 15 M57 17 48 42 M57 47 48 42 M32 61 48 42 M32 61 16 42 M7 47 16 42 M7 17 16 42 M7 17 32 15" stroke="rgba(255,255,255,.4)" stroke-width="1.4" fill="none"/><text x="32" y="38" text-anchor="middle" font-family="Ruslan Display" font-size="13" fill="#fff">20</text></svg>
+    <div><b>Гримуар</b><span>таверна d20</span></div>
+  </a>
+  <nav class="nav" id="nav">
+    <div class="ngroup">Мир</div>
+    <button data-nav="home" class="active"><svg viewBox="0 0 24 24"><path d="M12 3l7 4v8l-7 4-7-4V7zm0 5-4 7h8z"/></svg><span class="lbl">Главная</span></button>
+    <button data-nav="classes"><svg viewBox="0 0 24 24"><path d="M12 3 16.5 14.5 12 13 7.5 14.5Z M4 19c2.5-2.2 13.5-2.2 16 0"/></svg><span class="lbl">Классы</span></button>
+    <button data-nav="races"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg><span class="lbl">Расы</span></button>
+    <button data-nav="monsters"><svg viewBox="0 0 24 24"><path d="M6 4c1.5 4 1.5 8-1 12M12 3c1.5 4.5 1.5 9-1 13M18 4c1.5 4 1.5 8-1 12"/></svg><span class="lbl">Бестиарий</span></button>
+    <button data-nav="rules"><svg viewBox="0 0 24 24"><path d="M6 3h11a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm0 0v18m3-13h7m-7 4h7m-7 4h4"/></svg><span class="lbl">Правила</span></button>
+    <button data-nav="lore"><svg viewBox="0 0 24 24"><path d="M12 5c-2-1.5-5-2-8-2v14c3 0 6 .5 8 2 2-1.5 5-2 8-2V3c-3 0-6 .5-8 2v14"/></svg><span class="lbl">История мира</span></button>
+    <button data-nav="map"><svg viewBox="0 0 24 24"><path d="M9 4 4 6v14l5-2 6 2 5-2V4l-5 2-6-2zm0 0v14m6-12v14"/></svg><span class="lbl">Карта мира</span></button>
+    <div class="ngroup">Игра</div>
+    <button data-nav="party"><svg viewBox="0 0 24 24"><path d="M7 21V6a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v15M5 21h14M14.5 11v2"/></svg><span class="lbl">Комната партии</span></button>
+    <button data-nav="chars"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.5-3.5 4-5 7-5s5.5 1.5 7 5"/></svg><span class="lbl">Персонажи</span></button>
+    <button data-nav="items"><svg viewBox="0 0 24 24"><path d="M20 4 9 15m11-11v4m0-4h-4M7 13l4 4m-6.5 3.5L8 17"/></svg><span class="lbl">Предметы</span></button>
+    <button data-nav="quests"><svg viewBox="0 0 24 24"><path d="M12 3 20 12 12 21 4 12Z M12 8v5m0 3v.01"/></svg><span class="lbl">Задания</span></button>
+  </nav>
+  <div class="side-foot"><div class="conn"><i id="connDot"></i><span class="txt" id="connTxt">не в сети</span></div></div>
+</aside>
+
+<div class="shell">
+  <header class="top"><div class="crumb" id="crumb">Главная</div><div class="auth" id="authArea"></div></header>
+  <main>
+    <section class="page active" id="page-home">
+      <div class="hero">
+        <div>
+          <div class="kicker">✦ настольная ролевая система ✦</div>
+          <h1 class="logo">Гримуар <em>d20</em></h1>
+          <svg class="flourish" width="260" height="14" viewBox="0 0 260 14"><path d="M2 7c30-8 55 8 85 0s55 8 85 0 55 8 86 0" stroke="#8a6423" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="130" cy="7" r="3.5" fill="#d9a441"/></svg>
+          <p class="lead">Карты и фишки с листами персонажей, честные кубики, музыка и комната партии — всё в одном браузере, без серверов.</p>
+          <div class="hstats" id="homeStats"></div>
+          <div class="hactions"><button class="btn gold" onclick="openDice()">🎲 Бросить кубик</button><button class="btn ghost" onclick="go('map')">🗺 Открыть карту</button></div>
+        </div>
+        <div class="hero-dice">
+          <svg class="ring" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="none" stroke="#8a6423" stroke-width=".6" stroke-dasharray="3 5"/><circle cx="50" cy="50" r="44" fill="none" stroke="#4a3819" stroke-width=".4" stroke-dasharray="1 7"/><path d="M50 1l2 3-2 3-2-3zM50 93l2 3-2 3-2-3zM1 50l3-2 3 2-3 2zM93 50l3-2 3 2-3 2z" fill="#d9a441"/></svg>
+          <svg class="ring2" viewBox="0 0 100 100"><circle cx="50" cy="50" r="47" fill="none" stroke="#4f7fd1" stroke-width=".5" stroke-dasharray="10 14"/></svg>
+          <span class="orb o1"><svg width="42" height="42" viewBox="0 0 64 64"><polygon points="32,5 60,57 4,57" fill="url(#gBlue)" stroke="#9db8ef"/><text x="32" y="49" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">4</text></svg></span>
+          <span class="orb o2"><svg width="38" height="38" viewBox="0 0 64 64"><polygon points="32,4 60,32 32,60 4,32" fill="url(#gBlue)" stroke="#9db8ef"/><text x="32" y="38" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">8</text></svg></span>
+          <span class="orb o3"><svg width="40" height="40" viewBox="0 0 64 64"><path d="M14 7h36q7 0 7 7v36q0 7-7 7H14q-7 0-7-7V14q0-7 7-7z" fill="url(#gBlue)" stroke="#9db8ef"/><text x="32" y="38" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">6</text></svg></span>
+          <button class="megad20" id="megaRoll" title="Бросить d20!">
+            <svg viewBox="0 0 64 64"><polygon points="32,3 57,17 57,47 32,61 7,47 7,17" fill="url(#gBlue)" stroke="#9db8ef" stroke-width="1.6"/><path d="M32 15 48 42 H16 Z M32 3 V15 M57 17 32 15 M57 17 48 42 M57 47 48 42 M32 61 48 42 M32 61 16 42 M7 47 16 42 M7 17 16 42 M7 17 32 15" stroke="rgba(255,255,255,.38)" stroke-width="1.1" fill="none"/><text id="megaNum" x="32" y="38" text-anchor="middle" font-family="Ruslan Display" font-size="14" fill="#fff">20</text></svg>
+          </button>
+          <div class="megatip">нажми — и судьба решит</div>
+        </div>
+      </div>
+      <div class="home-grid">
+        <div class="panel rv"><h3>Быстрый старт</h3>
+          <ul class="steps">
+            <li>Первый, кто зарегистрируется за этим столом, становится Мастером.</li>
+            <li>На «Карте мира» мастер грузит карту, ставит фишки и создаёт им листы.</li>
+            <li>Клик по фишке открывает лист: ДМ видит всё, игроки — что открыл ДМ.</li>
+            <li>В «Комнате партии» — код комнаты, музыка и управление ролями.</li>
+          </ul>
+        </div>
+        <div class="panel rv"><h3>Последние броски</h3><div id="homeRolls"><div class="empty-hint">Пока тихо… Кто-нибудь, бросьте инициативу!</div></div></div>
+      </div>
+    </section>
+
+    <section class="page" id="page-classes"><div class="page-head"><h2>Классы</h2><span class="sub">выбери свой путь · по материалам dnd.su</span></div><div class="grid" id="classesGrid"></div></section>
+    <section class="page" id="page-races"><div class="page-head"><h2>Расы</h2><span class="sub">кровь и наследие</span></div><div class="grid" id="racesGrid"></div></section>
+    <section class="page" id="page-monsters">
+      <div class="page-head"><h2>Бестиарий</h2><span class="sub">чудовища от CR 1/8 до CR 21</span></div>
+      <div class="bfilters"><input class="search" id="monSearch" placeholder="Поиск по названию…"><select id="monCr"></select><select id="monType"></select></div>
+      <div class="grid" id="monGrid"></div>
+    </section>
+    <section class="page" id="page-rules">
+      <div class="page-head"><h2>Правила и гайд</h2><span class="sub">как работает D&D · новичкам</span></div>
+      <div class="rules-wrap"><nav class="rules-nav" id="rulesNav"></nav><div id="rulesBody"></div></div>
+    </section>
+    <section class="page" id="page-lore">
+      <div class="page-head"><h2>История мира</h2><span class="sub">заметки, легенды и слухи</span></div>
+      <div class="panel noteform rv"><div class="row2"><label class="f" style="margin:0">Заголовок<input id="noteTitle" placeholder="Трактат о Пяти Королевствах"></label><button class="btn gold" id="noteSave">Записать</button></div><textarea id="noteBody" placeholder="Текст летописи…"></textarea></div>
+      <div class="notes" id="notesGrid"></div>
+    </section>
+    <section class="page" id="page-map">
+      <div class="page-head"><h2>Карта мира</h2><span class="sub">поле боя, фишки и библиотека карт · клик по фишке — лист персонажа</span></div>
+      <div class="mapbar">
+        <button class="ibtn" id="btnUpload" title="Загрузить карту" style="display:none">⬆</button>
+        <input type="file" id="mapFile" accept="image/*" hidden>
+        <button class="ibtn" id="btnLib" title="Библиотека карт">🗂</button>
+        <button class="ibtn" id="btnDelMap" title="Убрать карту со стола" style="display:none">🗑</button>
+        <button class="ibtn" id="btnGrid" title="Сетка">▦</button>
+        <button class="ibtn" id="btnSnap" title="Привязка к клеткам">⌗</button>
+        <button class="ibtn" id="btnAddFocus" title="Добавить фишку">＋</button>
+        <button class="ibtn" id="btnClearTok" title="Очистить фишки" style="display:none">🧹</button>
+        <button class="ibtn" id="btnFull" title="Во весь экран">⛶</button>
+        <span class="hand" id="mapHint" style="color:#6b5836;margin-left:auto"></span>
+      </div>
+      <div class="board grid" id="board"><div class="boardmsg" id="boardMsg">Карта пуста.<br>Мастер, загрузите изображение поля боя ⬆</div></div>
+      <div class="hand" style="color:#6b5836;font-size:13px;margin-top:8px">клик по фишке — лист персонажа · перетаскивание — движение</div>
+      <div class="tokform"><input id="tokName" placeholder="Имя фишки (Гоблин, Торин…)"><div class="swatches" id="swatches"></div><button class="btn gold" id="btnAddTok">Поставить фишку</button></div>
+    </section>
+    <section class="page" id="page-party">
+      <div class="page-head"><h2>Комната партии</h2><span class="sub">связь браузеров напрямую · WebRTC (PeerJS)</span></div>
+      <div class="party-grid">
+        <div class="panel rv"><h3>Рукопожатие</h3>
+          <div class="connline"><i id="connDot2"></i><b id="connTxt2">Нет соединения</b></div>
+          <div id="rtcDm" style="display:none">
+            <div class="step"><div class="sl">Код твоей комнаты — дай его игрокам</div><div class="roomcode" id="roomCodeOut">— — — —</div><button class="btn ghost sm" id="cpOffer">Копировать код</button></div>
+            <div class="step"><div class="sl">За столом</div><div class="playerlist" id="playerList"><span class="hand" style="color:#6b5836;font-size:13px">пока никого</span></div></div>
+          </div>
+          <div id="rtcPl"><div class="step"><div class="sl">Введи код комнаты мастера</div><input id="offerIn" placeholder="Например: WOLF-4821" style="text-transform:uppercase"><button class="btn gold" id="mkAns" style="margin-top:10px">Войти в комнату</button></div></div>
+          <p class="hand" style="color:#6b5836;font-size:14px">Мастер создаёт комнату и получает короткий код. Игроки вводят его — соединение автоматически, данные идут напрямую.</p>
+          <button class="btn ghost danger" id="btnDisc" style="display:none;margin-top:10px">Разорвать связь</button>
+        </div>
+        <div class="panel rv"><h3>Летопись стола</h3>
+          <div class="feed" id="feed"><div class="empty-hint">Здесь появятся броски, фишки и реплики.</div></div>
+          <div class="chatrow"><input id="chatIn" placeholder="Сказать за столом…"><button class="btn gold" id="chatSend">➤</button></div>
+        </div>
+        <div class="panel rv music-panel"><h3>🎵 Музыка за столом</h3>
+          <div class="connline"><i id="musicDot"></i><b id="nowPlaying">Ничего не играет</b></div>
+          <div id="musicDm">
+            <button class="btn gold sm" id="btnAddTrack">+ Добавить трек</button>
+            <input type="file" id="trackFile" accept="audio/*" multiple hidden>
+            <div class="mcontrols"><button id="mPlay" title="Играть">▶</button><button id="mPause" title="Пауза">⏸</button><button id="mStop" title="Стоп">⏹</button></div>
+          </div>
+          <div class="playlist" id="playlist"></div>
+          <div class="volrow"><span>🔊</span><input type="range" id="vol" min="0" max="100" value="70"><span class="hand" style="font-size:12px;color:#6b5836">громкость у каждого своя</span></div>
+        </div>
+        <div class="panel rv" id="rolePanel" style="display:none"><h3>⚜ Управление ролями</h3>
+          <p class="hand" style="color:#6b5836;font-size:13px;margin-bottom:12px">Только Мастер. Права хранятся локально в этом браузере.</p>
+          <div id="userList"></div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="page-chars">
+      <div class="page-head"><h2>Персонажи</h2><span class="sub">герои партии</span><button class="btn gold" id="btnCharForm" style="margin-left:auto">+ Новый герой</button></div>
+      <div class="panel rv" id="charForm" style="display:none;margin-bottom:22px">
+        <div class="addform" style="max-width:none;grid-template-columns:2fr 1.4fr 1.4fr 90px 90px 90px auto">
+          <label class="f">Имя<input id="chName" placeholder="Торин Дубощит"></label><label class="f">Раса<input id="chRace" placeholder="Дворф"></label><label class="f">Класс<input id="chClass" placeholder="Воин"></label>
+          <label class="f">Ур.<input id="chLvl" type="number" value="1" min="1" max="20"></label><label class="f">HP<input id="chHp" type="number" value="10" min="0"></label><label class="f">AC<input id="chAc" type="number" value="13" min="0"></label>
+          <button class="btn gold" id="chSave">Создать</button>
+        </div>
+      </div>
+      <div class="chars" id="charsGrid"></div>
+    </section>
+    <section class="page" id="page-items">
+      <div class="page-head"><h2>Предметы</h2><span class="sub">мечи, свитки и зелья</span></div>
+      <div class="addform"><label class="f">Название<input id="itName" placeholder="Короткий меч +1"></label><label class="f">Тип<select id="itType"><option>Оружие</option><option>Броня</option><option>Зелье</option><option>Свиток</option><option>Разное</option></select></label><label class="f">Кол-во<input id="itQty" type="number" value="1" min="1"></label><button class="btn gold" id="itAdd">Добавить</button></div>
+      <div class="items" id="itemsList"></div>
+    </section>
+    <section class="page" id="page-quests">
+      <div class="page-head"><h2>Задания</h2><span class="sub">квесты партии</span></div>
+      <div class="panel rv" style="margin-bottom:22px"><div class="addform" style="max-width:none;grid-template-columns:1fr 2fr 1fr auto"><label class="f">Название<input id="qTitle" placeholder="Дракон на мельнице"></label><label class="f">Описание<input id="qDesc" placeholder="Мельник просит помощи…"></label><label class="f">Награда<input id="qRew" placeholder="120 зм"></label><button class="btn gold" id="qAdd">Взять квест</button></div></div>
+      <div class="qcols"><div class="qcol qc-act"><h4>Активные <span id="qcA"></span></h4><div id="qAct"></div></div><div class="qcol qc-done"><h4>Завершённые <span id="qcD"></span></h4><div id="qDone"></div></div><div class="qcol qc-fail"><h4>Проваленные <span id="qcF"></span></h4><div id="qFail"></div></div></div>
+    </section>
+  </main>
+</div>
+
+<button class="fab" onclick="openDice()" title="Бросить кубики"><svg viewBox="0 0 64 64"><polygon points="32,3 57,17 57,47 32,61 7,47 7,17" fill="rgba(255,255,255,.14)" stroke="#dbe6ff" stroke-width="2.4"/><path d="M32 15 48 42 H16 Z M32 3 V15 M57 17 32 15 M57 17 48 42 M57 47 48 42 M32 61 48 42 M32 61 16 42 M7 47 16 42 M7 17 16 42 M7 17 32 15" stroke="rgba(255,255,255,.55)" stroke-width="1.6" fill="none"/></svg></button>
+<div class="musicChip" id="musicChip"><span class="eq"><i></i><i></i><i></i></span><span>—</span></div>
+
+<div class="modal" id="diceModal"><div class="sheet">
+  <button class="mclose" onclick="closeModal('diceModal')">✕</button>
+  <div class="mtitle">Кости судьбы</div><div class="msub">кликай по кубикам, чтобы добавить их в бросок · результат сразу увидят все за столом</div>
+  <div class="dice-grid"><div class="tray" id="tray"></div>
+    <div><div class="chips" id="chipsRow"></div><div class="formula" id="formulaBox">(1d20 + 0 + 0)</div>
+      <div class="mods"><label class="f">Бонус мастерства<input id="prof" type="number" value="0" min="-5" max="20"></label><label class="f">Модификатор<input id="mod" type="number" value="0" min="-10" max="20"></label></div>
+      <button class="rollbtn" id="rollBtn">ROLL</button><div class="result" id="resultBox"></div></div>
+    <aside class="hist"><h3>История бросков</h3><div class="histlist" id="histList"></div><button class="btn ghost sm danger" id="histClear" style="margin-top:10px">Очистить</button></aside>
+  </div>
+</div></div>
+
+<div class="modal" id="sheetModal"><div class="sheet narrow">
+  <button class="mclose" onclick="closeModal('sheetModal')">✕</button>
+  <div class="mtitle" id="sheetTitle">📋 Лист фишки</div>
+  <div class="msub" id="sheetSub"></div>
+  <div id="sheetBody"></div>
+</div></div>
+
+<div class="modal" id="libModal"><div class="sheet narrow">
+  <button class="mclose" onclick="closeModal('libModal')">✕</button>
+  <div class="mtitle">🗂 Библиотека карт</div>
+  <div class="msub">сохраняй локации, чтобы вернуться сюда позже</div>
+  <button class="btn gold" id="saveMap" style="margin-bottom:14px">💾 Сохранить текущую</button>
+  <div id="mapLib"></div>
+</div></div>
+
+<div class="modal" id="authModal"><div class="sheet auth-sheet">
+  <button class="mclose" onclick="closeModal('authModal')">✕</button>
+  <div class="mtitle">Врата таверны</div><div class="msub">аккаунт хранится локально в твоём браузере</div>
+  <div class="tabs"><button class="on" data-tab="login">Войти</button><button data-tab="reg">Регистрация</button></div>
+  <form id="loginForm">
+    <label class="f">Имя или почта<input id="liName" autocomplete="username" required></label>
+    <label class="f">Пароль<input id="liPass" type="password" autocomplete="current-password" required></label>
+    <div class="fielderr" id="liErr"></div>
+    <button class="btn gold" style="width:100%">Войти</button>
+  </form>
+  <form id="regForm" style="display:none">
+    <div class="authnote">Новые герои регистрируются как <b>Игроки</b>. Первый за столом становится <b>Мастером</b>.</div>
+    <label class="f">Имя героя<input id="rgName" required placeholder="Например: Торин"></label>
+    <label class="f">Почта (необязательно)<input id="rgEmail" type="email" placeholder="hero@mail.ru"></label>
+    <label class="f">Пароль<input id="rgPass" type="password" minlength="3" required></label>
+    <div class="fielderr" id="rgErr"></div>
+    <button class="btn gold" style="width:100%">Создать героя</button>
+  </form>
+</div></div>
+
+<div id="toasts"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
