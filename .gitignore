@@ -1,1 +1,2 @@
-Nothing should be ignored based on the provided file changes, as they only include source/config files (.md, .html) without any build artifacts, dependencies, or temporary files.
+# No build artifacts, dependencies, or temporary files detected in changes
+# Source files only (.html) - no ignores needed
