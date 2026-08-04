@@ -1028,5 +1028,133 @@
         window.addEventListener('DOMContentLoaded', init);
 
     </script>
+    <!-- ═══════════ ТЕМА «ПЕКЛО» + НАСТРОЙКИ (вставить перед </body>) ═══════════ -->
+<style>
+  /* Огненная тема: перекрашивает всё через переменные */
+  body.theme-fire{
+    --bg0:#0d0a09; --panel:#1d1310; --ink:#f2e8dc; --dim:#b8a894; --line:#4a2a18;
+    --gold:#ff8c2e; --gold-b:#ffb45e; --gold-d:#b34e15; --ember:#ff5722;
+    --blood:#e53935; --parch:#ffdcb0;
+  }
+  body.theme-fire::before{
+    background:
+      radial-gradient(900px 620px at 12% 112%, rgba(255,87,34,.16), transparent 62%),
+      radial-gradient(820px 520px at 88% 112%, rgba(255,152,0,.13), transparent 62%),
+      linear-gradient(180deg,#0d0a09,#140c07 60%,#1a0d06);
+  }
+  body.theme-fire .panel, body.theme-fire .side{filter:saturate(1.05)}
+
+  /* Огненный фон (canvas) */
+  #fireCanvas{position:fixed;inset:0;z-index:1;pointer-events:none;display:none}
+
+  /* Кнопка настроек в шапке */
+  #themeGear{width:40px;height:40px;font-size:18px;display:grid;place-items:center;padding:0}
+
+  /* Модалка настроек */
+  .themePick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 8px}
+  .tcard{display:flex;flex-direction:column;gap:6px;align-items:flex-start;background:#171009;
+    border:2px solid #43331c;border-radius:10px;padding:14px;cursor:pointer;transition:.2s;text-align:left}
+  .tcard b{font:400 17px var(--disp);color:var(--ink)}
+  .tcard i{font:400 13px var(--hand);color:var(--dim);font-style:normal}
+  .tcard .tprev{display:block;width:100%;height:44px;border-radius:6px;margin-bottom:6px}
+  .tcard .tprev.tav{background:linear-gradient(135deg,#241b11,#8a6423 60%,#d9a441)}
+  .tcard .tprev.fir{background:linear-gradient(135deg,#1a0d08,#b3400f 55%,#ff7b2e)}
+  .tcard:hover{border-color:var(--gold);transform:translateY(-2px)}
+  .tcard.on{border-color:var(--gold-b);box-shadow:inset 0 0 0 2px var(--gold-d)}
+  .fireRow{display:flex;align-items:center;gap:10px;font:400 15px var(--hand);color:var(--ink);
+    background:#171009;border:1px solid #43331c;border-radius:8px;padding:11px 14px;margin-top:6px}
+  .fireRow input{width:auto;accent-color:var(--gold)}
+  @media(max-width:520px){.themePick{grid-template-columns:1fr}}
+</style>
+
+<canvas id="fireCanvas"></canvas>
+
+<div class="modal" id="settingsModal">
+  <div class="sheet" style="width:min(430px,100%)">
+    <button class="mclose" id="closeSettings" type="button">✕</button>
+    <div class="mtitle">⚙ Настройки стола</div>
+    <div class="msub">выбери оформление — сохранится в твоём браузере</div>
+    <div class="themePick">
+      <button type="button" class="tcard" data-theme="tavern">
+        <span class="tprev tav"></span><b>🍺 Таверна</b><i>классика: дерево и золото</i>
+      </button>
+      <button type="button" class="tcard" data-theme="fire">
+        <span class="tprev fir"></span><b>🔥 Пекло</b><i>угли, жар и живой огонь</i>
+      </button>
+    </div>
+    <label class="fireRow"><input type="checkbox" id="fireToggle" checked><span>Огненный фон (частицы снизу)</span></label>
+  </div>
+</div>
+
+<script>
+(function(){
+  /* ── Огонь (canvas) ── */
+  var fc=document.getElementById('fireCanvas'),fx=fc.getContext('2d');
+  var parts=[],fireActive=false,fireRaf=null;
+  var isMobile=function(){return window.innerWidth<768;};
+  function sizeFire(){fc.width=window.innerWidth;fc.height=window.innerHeight;}
+  window.addEventListener('resize',sizeFire);
+  function mkP(){return{x:Math.random()*fc.width,y:fc.height+15,r:2+Math.random()*4,
+    vy:1.2+Math.random()*2.2,vx:(Math.random()-.5)*.7,life:.7+Math.random()*.3};}
+  function fireStep(){
+    if(!fireActive){fx.clearRect(0,0,fc.width,fc.height);fireRaf=null;return;}
+    fx.clearRect(0,0,fc.width,fc.height);
+    if(!document.hidden){
+      var cap=isMobile()?40:70;
+      if(parts.length<cap){parts.push(mkP());parts.push(mkP());}
+      parts=parts.filter(function(p){return p.life>0&&p.y>-30;});
+      for(var i=0;i<parts.length;i++){var p=parts[i];
+        p.y-=p.vy;p.x+=p.vx;p.life-=.009;p.r*=.992;
+        var heat=Math.floor(60+120*p.life);
+        var g=fx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3.2);
+        g.addColorStop(0,'rgba(255,'+heat+',10,'+(0.55*p.life)+')');
+        g.addColorStop(1,'rgba(255,40,0,0)');
+        fx.fillStyle=g;fx.beginPath();fx.arc(p.x,p.y,p.r*3.2,0,6.283);fx.fill();
+      }
+    }
+    fireRaf=requestAnimationFrame(fireStep);
+  }
+  function setFire(on){fireActive=on;fc.style.display=on?'block':'none';
+    if(on&&!fireRaf)fireStep(); if(!on)fx.clearRect(0,0,fc.width,fc.height);}
+
+  /* ── Тема ── */
+  function applyTheme(t,save){
+    document.body.classList.toggle('theme-fire',t==='fire');
+    if(save!==false)localStorage.setItem('d20theme',t);
+    var tog=document.getElementById('fireToggle');
+    document.querySelectorAll('.tcard').forEach(function(b){
+      b.classList.toggle('on',b.dataset.theme===t);});
+    setFire(t==='fire'&&tog.checked);
+  }
+
+  /* ── Кнопка ⚙ в шапке ── */
+  var top=document.querySelector('.top');
+  var auth=document.getElementById('authArea');
+  var gear=document.createElement('button');
+  gear.type='button';gear.className='btn ghost';gear.id='themeGear';
+  gear.textContent='⚙';gear.title='Настройки оформления';
+  gear.addEventListener('click',function(){document.getElementById('settingsModal').classList.add('open');});
+  if(top&&auth)top.insertBefore(gear,auth);
+
+  /* ── Обработчики настроек ── */
+  document.querySelectorAll('.tcard').forEach(function(b){
+    b.addEventListener('click',function(){applyTheme(b.dataset.theme,true);});});
+  document.getElementById('fireToggle').addEventListener('change',function(){
+    localStorage.setItem('d20fire',this.checked?'1':'0');
+    if(document.body.classList.contains('theme-fire'))setFire(this.checked);});
+  document.getElementById('closeSettings').addEventListener('click',function(){
+    document.getElementById('settingsModal').classList.remove('open');});
+  document.getElementById('settingsModal').addEventListener('click',function(e){
+    if(e.target.id==='settingsModal')this.classList.remove('open');});
+
+  /* ── Восстановить сохранённое при загрузке ── */
+  sizeFire();
+  var savedTheme=localStorage.getItem('d20theme')||'tavern';
+  var savedFire=localStorage.getItem('d20fire')!=='0';
+  document.getElementById('fireToggle').checked=savedFire;
+  applyTheme(savedTheme,false);
+})();
+</script>
+<!-- ═══════════ /ТЕМА «ПЕКЛО» ═══════════ -->
 </body>
 </html>
